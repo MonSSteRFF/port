@@ -1,0 +1,54 @@
+name: "port:dev_docker"
+
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=port
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+    networks:
+      - port_network
+    volumes:
+      - mongodb_data:/data/db
+    restart: always
+
+  backend:
+    image: node:20-alpine
+    working_dir: /app/backend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV
+    volumes:
+      - ../:/app
+      - /app/node_modules
+      - /app/backend/node_modules
+    networks:
+      - port_network
+    command: sh -c "corepack enable && pnpm install && pnpm run start:dev_docker"
+    depends_on:
+      - mongodb
+
+  frontend:
+    image: node:20-alpine
+    working_dir: /app/frontend
+    environment:
+      - NODE_ENV
+    volumes:
+      - ../:/app
+      - /app/node_modules
+      - /app/frontend/node_modules
+    networks:
+      - port_network
+    command: sh -c "corepack enable && pnpm install && pnpm run dev"
+
+
+volumes:
+  mongodb_data:
+
+networks:
+  port_network:
+    driver: bridge

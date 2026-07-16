@@ -1,13 +1,26 @@
 {
-  "name": "port",
-  "version": "0.0.1",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.28.1",
-  "dependencies": {
-    "@biomejs/biome": "^2.5.4"
-  }
+	"name": "port",
+	"version": "0.0.1",
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.28.1",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+
+		"build:front": "cd frontend && pnpm run build",
+		"build:back": "cd backend && pnpm run build",
+		"build": "pnpm run build:backend && pnpm run build:frontend",
+
+		"start": "node dist/main.js",
+
+		"dev:front": "cd frontend && pnpm run dev",
+		"dev:back": "cd backend && pnpm run start:dev",
+		"dev:back_docker": "cd backend && pnpm run start:dev_docker",
+		"dev:db": "docker-compose.dev.yml",
+
+		"dev:docker": "NODE_ENV=dev_docker docker compose -f infra/docker-compose.dev_docker.yml up -d"
+	},
+	"dependencies": {
+		"@biomejs/biome": "^2.5.4"
+	}
 }

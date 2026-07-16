@@ -1,0 +1,16 @@
+@import url("../assets/fonts/fonts.css");
+
+:root {
+	font-family: "Onest", sans-serif;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+
+	font-size: 18px;
+	line-height: 1.2;
+}
