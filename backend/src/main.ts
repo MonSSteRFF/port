@@ -2,8 +2,10 @@ import { Logger } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { viteProxyMiddleware } from "./common/vite-proxy.middleware";
+import config from "./config/env";
 import { setupSwagger } from "./config/swagger.config";
 
+const env = config();
 const logger = new Logger("Global");
 
 async function bootstrap() {
@@ -11,14 +13,14 @@ async function bootstrap() {
 
 	app.setGlobalPrefix("api");
 
-	if (process.env.NODE_ENV !== "prod") {
+	if (env.node_env !== "prod") {
 		app.use(viteProxyMiddleware);
 		setupSwagger(app);
 	}
 
-	await app.listen(process.env.PORT || 3000);
+	await app.listen(env.port);
 }
 
 bootstrap().then(() => {
-	logger.log(`Server start on http://localhost:${process.env.PORT} in ${process.env.NODE_ENV} mode`);
+	logger.log(`Server start on http://localhost:${env.port} in ${env.node_env} mode`);
 });

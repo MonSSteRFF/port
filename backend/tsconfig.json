@@ -21,6 +21,8 @@
 		"strictBindCallApply": true,
 		"noFallthroughCasesInSwitch": true,
 
-		"outDir": "./dist"
+		"outDir": "./dist",
+
+		"types": ["node", "jest"]
 	}
 }

@@ -1,8 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import { createProxyMiddleware } from "http-proxy-middleware";
+import { env } from "../config/env";
 
 const viteProxy = createProxyMiddleware({
-	target: process.env.VITE_PROXY_TARGET,
+	target: env.vite_proxy_target,
 	changeOrigin: true,
 	ws: true,
 	xfwd: true,
