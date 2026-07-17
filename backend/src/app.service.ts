@@ -7,6 +7,6 @@ export class AppService {
 	constructor(private configService: ConfigService<AppConfig, true>) {}
 
 	getHello(): string {
-		return "Hello World!";
+		return `Hello World! ${this.configService.get("port")}`;
 	}
 }
