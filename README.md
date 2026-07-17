@@ -94,6 +94,6 @@ pnpm build
 
 ## Further Reading
 
-- [Backend — scripts and dependencies](backend/README.md)
-- [Frontend — scripts and dependencies](frontend/README.md)
+- [Backend — scripts and dependencies](backend)
+- [Frontend — scripts and dependencies](frontend)
 - [TODO LIST](TODO.md)
