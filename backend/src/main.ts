@@ -1,7 +1,10 @@
+import { Logger } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { viteProxyMiddleware } from "./common/vite-proxy.middleware";
 import { setupSwagger } from "./config/swagger.config";
+
+const logger = new Logger("Global");
 
 async function bootstrap() {
 	const app = await NestFactory.create(AppModule);
@@ -17,7 +20,5 @@ async function bootstrap() {
 }
 
 bootstrap().then(() => {
-	console.log(
-		`Server start on http://localhost:${process.env.PORT} in ${process.env.NODE_ENV} mode`,
-	);
+	logger.log(`Server start on http://localhost:${process.env.PORT} in ${process.env.NODE_ENV} mode`);
 });

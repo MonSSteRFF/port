@@ -1,0 +1,10 @@
+- [ ] auth pages - (register, login, emailVerify, resetPassword)
+- [ ] auth context provider with useAuth hook
+- [ ] Users table in mongodb
+- [ ] backend Auth controller, module, service
+- [ ] extend configService by yml configs
+- [ ] add mongodb and redis by nestjs
+- [ ] TOTP auth method
+- [ ] GSI auth method
+- [ ] implement WS for RPC,SUB,PUB events and channels
+- [ ] profile, avatar, name, auth - need front/back update/upload/create

@@ -16,7 +16,7 @@
 		"dev:front": "cd frontend && pnpm run dev",
 		"dev:back": "cd backend && pnpm run start:dev",
 		"dev:back_docker": "cd backend && pnpm run start:dev_docker",
-		"dev:db": "docker-compose.dev.yml",
+		"dev:db": "NODE_ENV=dev docker compose -f infra/docker-compose.dev.yml up -d",
 
 		"dev:docker": "NODE_ENV=dev_docker docker compose -f infra/docker-compose.dev_docker.yml up -d"
 	},

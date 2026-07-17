@@ -3,8 +3,6 @@ name: "port:dev_docker"
 services:
   mongodb:
     image: mongo:latest
-    ports:
-      - "27017:27017"
     environment:
       - MONGO_INITDB_DATABASE=port
       - MONGO_INITDB_ROOT_USERNAME=root
