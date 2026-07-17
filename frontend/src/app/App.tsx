@@ -1,20 +1,14 @@
-import { useEffect, useState } from "react";
+import { Providers } from "./providers/Providers";
+import "@shared/styles/index.css";
+import { Router } from "@app/router/Router";
+import { Layout } from "@widgets/Layout/Layout";
 
 export const App = () => {
-	const [response, setResponse] = useState<string>("");
-
-	useEffect(() => {
-		fetch("http://localhost:3000/api/").then((res) => {
-			res.text().then((text) => {
-				setResponse(text);
-			});
-		});
-	}, []);
-
 	return (
-		<>
-			<h1>app</h1>
-			<p>text: {response}</p>
-		</>
+		<Providers>
+			<Layout>
+				<Router />
+			</Layout>
+		</Providers>
 	);
 };

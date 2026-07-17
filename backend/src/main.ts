@@ -8,7 +8,7 @@ async function bootstrap() {
 
 	app.setGlobalPrefix("api");
 
-	if (process.env.NODE_ENV !== "production") {
+	if (process.env.NODE_ENV !== "prod") {
 		app.use(viteProxyMiddleware);
 		setupSwagger(app);
 	}
@@ -16,4 +16,8 @@ async function bootstrap() {
 	await app.listen(process.env.PORT || 3000);
 }
 
-bootstrap();
+bootstrap().then(() => {
+	console.log(
+		`Server start on http://localhost:${process.env.PORT} in ${process.env.NODE_ENV} mode`,
+	);
+});

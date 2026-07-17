@@ -1,0 +1,7 @@
+.layout_navbar {
+	max-width: 220px;
+
+	@media (max-width: 576px) {
+		max-width: 100%;
+	}
+}

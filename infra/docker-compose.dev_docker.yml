@@ -14,36 +14,35 @@ services:
     volumes:
       - mongodb_data:/data/db
     restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "mongosh --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' --quiet" ]
+      interval: 1s
+      timeout: 5s
+      retries: 5
 
   backend:
-    image: node:20-alpine
+    build:
+      context: ../
+      dockerfile: infra/dev.Dockerfile
     working_dir: /app/backend
-    ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV
-    volumes:
-      - ../:/app
-      - /app/node_modules
-      - /app/backend/node_modules
-    networks:
-      - port_network
-    command: sh -c "corepack enable && pnpm install && pnpm run start:dev_docker"
+    ports: ["3000:3000"]
+    environment: ["NODE_ENV"]
+    volumes: ["../:/app/"]
+    networks: ["port_network"]
+    command: "pnpm run start:dev_docker"
     depends_on:
-      - mongodb
+      mongodb:
+        condition: service_healthy
 
   frontend:
-    image: node:20-alpine
+    build:
+      context: ../
+      dockerfile: infra/dev.Dockerfile
     working_dir: /app/frontend
-    environment:
-      - NODE_ENV
-    volumes:
-      - ../:/app
-      - /app/node_modules
-      - /app/frontend/node_modules
-    networks:
-      - port_network
-    command: sh -c "corepack enable && pnpm install && pnpm run dev"
+    environment: ["NODE_ENV"]
+    volumes: ["../:/app/"]
+    networks: ["port_network"]
+    command: "pnpm run dev"
 
 
 volumes:

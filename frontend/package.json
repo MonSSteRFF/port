@@ -1,5 +1,5 @@
 {
-	"name": "frontend",
+	"name": "@port/frontend",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
@@ -10,8 +10,25 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@mantine/charts": "^9.4.1",
+		"@mantine/code-highlight": "^9.4.1",
+		"@mantine/core": "^9.4.1",
+		"@mantine/dates": "^9.4.1",
+		"@mantine/form": "^9.4.1",
+		"@mantine/hooks": "^9.4.1",
+		"@mantine/notifications": "^9.4.1",
+		"@tabler/icons-react": "^3.44.0",
+		"dayjs": "^1.11.21",
+		"i18next": "^26.3.6",
+		"js-yaml": "^5.2.1",
 		"react": "^19.2.7",
-		"react-dom": "^19.2.7"
+		"react-dom": "^19.2.7",
+		"react-i18next": "^17.0.10",
+		"recharts": "^3.9.2",
+		"vite-plugin-i18next-loader": "^4.1.0",
+		"vite-plugin-svgr": "^5.2.0",
+		"wouter": "^3.10.0",
+		"zustand": "^5.0.14"
 	},
 	"devDependencies": {
 		"@types/node": "^24.13.2",

@@ -10,27 +10,24 @@ services:
       - MONGO_INITDB_DATABASE=port
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=secret
-    networks:
-      - port_network
+    networks: ["port_network"]
     volumes:
       - mongodb_data:/data/db
     restart: always
 
   app:
     build:
-      context: .
-      dockerfile: backend/Dockerfile
+      context: ../
+      dockerfile: infra/prod.Dockerfile
     container_name: port_app
-    ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=prod
+    ports: ["3000:3000"]
+    environment: ["NODE_ENV=prod"]
     volumes:
       - ./backend/.env.prod:/app/dist/.env.prod
     depends_on:
-      - mongodb
-    networks:
-      - port_network
+      mongodb:
+        condition: service_healthy
+    networks: ["port_network"]
     restart: always
 
 volumes:

@@ -3,13 +3,13 @@ import { IsEnum, IsNumber, IsString, validateSync } from "class-validator";
 
 class EnvironmentVariables {
 	@IsEnum(["dev", "dev_docker", "prod", "test"])
-	NODE_ENV: string;
+	NODE_ENV!: string;
 
 	@IsNumber()
-	PORT: number;
+	PORT!: number;
 
 	@IsString()
-	MONGO_DB_URL: string;
+	MONGO_DB_URL!: string;
 }
 
 export interface AppConfig {
