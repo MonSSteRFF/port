@@ -33,6 +33,7 @@ NestJS API server.
 | `class-validator`    | DTO validation                |
 | `globals`            | Biome global variables        |
 | `jest`               | Test framework                |
+| `openapi-typescript` | OpenAPI TypeScript client gen |
 | `prettier`           | Formatter                     |
 | `source-map-support` | Source map support            |
 | `supertest`          | HTTP testing                  |

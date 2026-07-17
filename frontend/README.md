@@ -18,6 +18,8 @@ React SPA built with Vite and Mantine UI library.
 | `@mantine/hooks`             | Mantine hooks               |
 | `@mantine/notifications`     | Notifications               |
 | `@tabler/icons-react`        | Tabler icons                |
+| `openapi-fetch`              | OpenAPI fetch client        |
+| `openapi-react-query`        | OpenAPI React Query adapter |
 | `dayjs`                      | Date manipulation           |
 | `i18next`                    | Internationalization        |
 | `react-i18next`              | React wrapper for i18next   |
